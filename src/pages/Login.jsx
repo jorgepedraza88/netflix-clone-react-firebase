@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const Login = () => {
@@ -8,6 +8,10 @@ const Login = () => {
   const [error, setError] = useState("");
   const { user, logIn } = UserAuth();
   const navigate = useNavigate();
+
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
